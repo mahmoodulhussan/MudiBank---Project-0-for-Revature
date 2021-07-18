@@ -1,0 +1,20 @@
+2021-07-10 16:03:58 INFO  Logging:47 - User: MahmoodUl Hussan3343 posted a new post
+2021-07-10 16:04:49 INFO  Logging:47 - User: MahmoodUl Hussan3343 posted a new post
+2021-07-17 16:12:28 INFO  Logging:30 - New user has registered
+2021-07-17 16:20:33 INFO  Logging:30 - New user has registered
+2021-07-17 17:58:57 WARN  Logging:45 - User tried loggging in that does not exist
+2021-07-17 18:01:34 WARN  Logging:45 - User tried loggging in that does not exist
+2021-07-17 18:07:00 WARN  Logging:45 - User tried loggging in that does not exist
+2021-07-17 18:08:28 WARN  Logging:45 - User tried loggging in that does not exist
+2021-07-17 18:20:15 WARN  Logging:34 - Username created that already exists in the database
+2021-07-17 18:20:51 INFO  Logging:32 - New user has registered
+2021-07-17 18:21:45 WARN  Logging:45 - User tried loggging in that does not exist
+2021-07-17 18:49:48 WARN  Logging:48 - User tried loggging in that does not exist
+2021-07-17 18:53:01 WARN  Logging:48 - User tried loggging in that does not exist
+2021-07-17 18:57:46 WARN  Logging:48 - User tried loggging in that does not exist
+2021-07-17 19:03:38 WARN  Logging:48 - User tried loggging in that does not exist
+2021-07-17 19:07:26 WARN  Logging:48 - User tried loggging in that does not exist
+2021-07-17 19:10:35 WARN  Logging:48 - User tried loggging in that does not exist
+2021-07-17 19:18:57 INFO  Logging:56 - User was logged in
+2021-07-17 19:50:41 INFO  Logging:32 - New user has registered
+2021-07-17 19:51:37 WARN  Logging:48 - User tried loggging in that does not exist
