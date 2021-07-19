@@ -24,8 +24,8 @@ public class CustomerService {
 		this.cDao = c;
 	}
 	
-	public Customer signUp(String first, String last, String username, String email, String password) throws UserNameAlreadyExistException{
-		Customer c = new Customer(first, last, username, email, password);
+	public Customer signUp(String first, String last, String username, String email, String password, int startingBalance) throws UserNameAlreadyExistException{
+		Customer c = new Customer(first, last, username, email, password, startingBalance);
 		
 		try {
 			cDao.createCustomer(c);

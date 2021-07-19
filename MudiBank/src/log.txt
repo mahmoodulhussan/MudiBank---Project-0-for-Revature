@@ -18,3 +18,24 @@
 2021-07-17 19:18:57 INFO  Logging:56 - User was logged in
 2021-07-17 19:50:41 INFO  Logging:32 - New user has registered
 2021-07-17 19:51:37 WARN  Logging:48 - User tried loggging in that does not exist
+2021-07-17 21:24:15 INFO  Logging:56 - User was logged in
+2021-07-17 21:25:14 INFO  Logging:56 - User was logged in
+2021-07-17 21:27:26 INFO  Logging:56 - User was logged in
+2021-07-17 21:53:28 WARN  Logging:34 - Username created that already exists in the database
+2021-07-17 21:55:09 INFO  Logging:32 - New user has registered
+2021-07-17 22:00:51 INFO  Logging:32 - New user has registered
+2021-07-18 16:10:31 INFO  Logging:56 - User was logged in
+2021-07-18 16:14:23 INFO  Logging:56 - User was logged in
+2021-07-18 16:16:36 INFO  Logging:56 - User was logged in
+2021-07-18 16:17:20 INFO  Logging:56 - User was logged in
+2021-07-18 16:20:05 INFO  Logging:56 - User was logged in
+2021-07-18 16:22:11 INFO  Logging:56 - User was logged in
+2021-07-18 16:22:29 INFO  Logging:56 - User was logged in
+2021-07-18 16:23:19 INFO  Logging:56 - User was logged in
+2021-07-18 16:24:02 INFO  Logging:56 - User was logged in
+2021-07-18 16:32:20 INFO  Logging:56 - User was logged in
+2021-07-18 16:33:29 INFO  Logging:56 - User was logged in
+2021-07-18 17:03:22 INFO  Logging:56 - User was logged in
+2021-07-18 21:17:37 INFO  Logging:56 - User was logged in
+2021-07-18 21:27:19 INFO  Logging:56 - User was logged in
+2021-07-18 21:30:40 INFO  Logging:56 - User was logged in

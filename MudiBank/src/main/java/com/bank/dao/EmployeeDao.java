@@ -1,16 +1,22 @@
 package com.bank.dao;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import com.bank.models.Customer;
 import com.bank.models.Employee;
-import com.bank.models.PostDisplay;
-//import com.bank.models.User;
+import com.bank.models.TranDisplay;
 
 public interface EmployeeDao {
-	public void createPost(Employee p);
 	
-	public List<PostDisplay> getAllPosts();
+	public void depositWithdraw(Employee emp);
+
+	public void initTransfer(Employee emp);
 	
-	public Customer getUsersPosts(Customer c);
+	public List<TranDisplay> getAllTransfers();
+	
+	public Customer getCustomerTransfers(Customer c);
+	
+	public Employee checkBalance(int src_id);
+
 }

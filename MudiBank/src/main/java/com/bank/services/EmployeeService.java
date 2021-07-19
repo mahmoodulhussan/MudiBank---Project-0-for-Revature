@@ -8,7 +8,7 @@ import com.bank.dao.EmployeeDao;
 import com.bank.logging.Logging;
 import com.bank.models.Customer;
 import com.bank.models.Employee;
-import com.bank.models.PostDisplay;
+import com.bank.models.TranDisplay;
 //import com.bank.models.User;
 
 public class EmployeeService {
@@ -19,17 +19,24 @@ private EmployeeDao eDao;
 		this.eDao = emp;
 	}
 	
-	public void addPost(int userId, int wallId, int content) {
-		Employee p = new Employee(userId, wallId, content);
-		eDao.createPost(p);
+	public Employee initTransfer(int srcId, int destId, int tranAmount) {
+		Employee emp = new Employee(srcId, destId, tranAmount);
+		eDao.initTransfer(emp);
+		return emp;
 	}
 	
-	public List<PostDisplay> getAllPosts(){
-		return eDao.getAllPosts();
+	public Employee depositWithdraw(int destId, int tranAmount) {
+		Employee emp = new Employee(destId, tranAmount);
+		eDao.initTransfer(emp);
+		return emp;
+	}
+	
+	public List<TranDisplay> getAllPosts(){
+		return eDao.getAllTransfers();
 	}
 	
 	public Customer loadUserPosts(Customer c) {
-		return eDao.getUsersPosts(c);
+		return eDao.getCustomerTransfers(c);
 	}
 	
 }

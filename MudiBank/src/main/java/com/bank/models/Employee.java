@@ -4,66 +4,75 @@ package com.bank.models;
 
 public class Employee {
 	
-	private int postId;
-	private int authorId;
-	private int wallUserId;
-	private int postContent;
+	private int tranId;
+	private int srcId;
+	private int destId;
+	private int tranAmount;
 	
 	public Employee() {
 		
 	}
 	
-	public Employee(int id, int authorId, int wallId, int content) {
-		this.postId = id;
-		this.authorId = authorId;
-		this.wallUserId = wallId;
-		this.postContent = content;
+	public Employee(int id, int srcId, int destId, int tranAmount) {
+		this.tranId = id;
+		this.srcId = srcId;
+		this.destId = destId;
+		this.tranAmount = tranAmount;
 	}
 	
-	public Employee(int authorId, int wallId, int content) {
-		this.authorId = authorId;
-		this.wallUserId = wallId;
-		this.postContent = content;
+	
+	
+	public Employee(int destId, int tranAmount) {
+		super();
+		this.destId = destId;
+		this.tranAmount = tranAmount;
 	}
 
-	public int getPostId() {
-		return postId;
+	public Employee(int srcId, int destId, int tranAmount) {
+		this.srcId = srcId;
+		this.destId = destId;
+		this.tranAmount = tranAmount;
 	}
 
-	public void setPostId(int postId) {
-		this.postId = postId;
+	public int getTranId() {
+		return tranId;
 	}
 
-	public int getAuthorId() {
-		return authorId;
+	public void setTranId(int tranId) {
+		this.tranId = tranId;
 	}
 
-	public void setAuthorId(int authorId) {
-		this.authorId = authorId;
-	}
-	
-	public int getWallUserId() {
-		return wallUserId;
+	public int getSrcId() {
+		return srcId;
 	}
 
-	public void setWallUserId(int wallUserId) {
-		this.wallUserId = wallUserId;
+	public void setSrcId(int srcId) {
+		this.srcId = srcId;
 	}
-	
-	public int getPostContent() {
-		return postContent;
+
+	public int getDestId() {
+		return destId;
 	}
-	
-	public void setPostContent(int postContent) {
-		this.postContent = postContent;
+
+	public void setDestId(int destId) {
+		this.destId = destId;
 	}
-	
-	
+
+	public int getTranAmount() {
+		return tranAmount;
+	}
+
+	public void setTranAmount(int tranAmount) {
+		this.tranAmount = tranAmount;
+	}
+
 	@Override
 	public String toString() {
-		return "Post [postId=" + postId + ", authorId=" + authorId + ", wallUserId=" + wallUserId + ", postContent="
-				+ postContent + "]";	
-		}
+		return "Employee [tranId=" + tranId + ", srcId=" + srcId + ", destId=" + destId + ", tranAmount=" + tranAmount
+				+ "]";
+	}
+
+	
 
 
 }

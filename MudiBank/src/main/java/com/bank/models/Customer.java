@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import com.bank.models.Account;
+
 public class Customer{
 	
 	private int customerId;
@@ -14,7 +16,10 @@ public class Customer{
 	private String username;
 	private String email;
 	private String password;
+	private int startingBalance;
 	private List<Employee> posts;
+	private ArrayList<Account> accounts;
+
 	
 	public Customer() {
 		posts = new ArrayList<Employee>();
@@ -30,13 +35,26 @@ public class Customer{
 		this.posts = new ArrayList<Employee>();
 	}
 	
-	//Used to send user info to the database because the db auto generates the id
-	public Customer(String firstName, String lastName, String username, String email, String password) {
+	public Customer(int customerId, String firstName, String lastName, String username, String email, String password,
+			int startingBalance) {
+		super();
+		this.customerId = customerId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.username = username;
 		this.email = email;
 		this.password = password;
+		this.startingBalance = startingBalance;
+	}
+
+	//Used to send user info to the database because the db auto generates the id
+	public Customer(String firstName, String lastName, String username, String email, String password, int startingBalance) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		this.startingBalance = startingBalance;
 		this.posts = new ArrayList<Employee>();
 	}
 	
@@ -50,6 +68,10 @@ public class Customer{
 		this.password = password;
 		this.posts = new ArrayList<Employee>();
 	}
+	
+	public boolean addAccount(Account a) {	
+		return accounts.add(a);
+}
 
 	public int getCustomerId() {
 		return customerId;
@@ -111,6 +133,14 @@ public class Customer{
 	public String toString() {
 		return "User [customerId=" + customerId + ", firstName=" + firstName + ", lastName=" + lastName + ", username=" + username
 				+ ", email=" + email + ", password=" + password + ", posts=" + posts + "]";
+	}
+
+	public int getStartingBalance() {
+		return startingBalance;
+	}
+
+	public void setStartingBalance(int startingBalance) {
+		this.startingBalance = startingBalance;
 	}
 	
 	

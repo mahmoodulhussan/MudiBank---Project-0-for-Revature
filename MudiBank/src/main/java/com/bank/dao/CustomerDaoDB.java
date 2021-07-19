@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.bank.models.Account;
 import com.bank.models.Customer;
 //import com.bank.models.User;
 import com.bank.utils.ConnectionUtil;
@@ -33,7 +34,7 @@ public class CustomerDaoDB implements CustomerDao {
 			ResultSet rs = s.executeQuery(sql);
 			
 			while(rs.next()) {
-				customerList.add(new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(5), rs.getString(4), rs.getString(6)));			}
+				customerList.add(new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(5), rs.getString(4), rs.getString(6), rs.getInt(7)));			}
 			
 			return customerList;
 			
@@ -80,8 +81,8 @@ public class CustomerDaoDB implements CustomerDao {
 		
 		con.setAutoCommit(false);
 
-		String sql = "INSERT INTO users(first_name, last_name, email, username, password) values"
-				+ "(?,?,?,?,?)";
+		String sql = "INSERT INTO users(first_name, last_name, email, username, password, starting_balance) values"
+				+ "(?,?,?,?,?,?)";
 		PreparedStatement ps = con.prepareStatement(sql);
 		
 		ps.setString(1, c.getFirstName());
@@ -89,10 +90,11 @@ public class CustomerDaoDB implements CustomerDao {
 		ps.setString(3, c.getEmail());
 		ps.setString(4, c.getUsername());
 		ps.setString(5, c.getPassword());
-		
+		ps.setInt(6, c.getStartingBalance());
+
 		ps.execute();
 		
-		
+		con.commit();
 	}
 
 	@Override
@@ -133,6 +135,45 @@ public class CustomerDaoDB implements CustomerDao {
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}		
+	}
+
+	@Override
+	public ArrayList<Customer> getByAccount(Account account) {
+	
+		ArrayList<Customer> cList = new ArrayList<>();
+		
+		try(Connection con = conUtil.getConnection();) {
+			
+			String sql = "SELECT * "
+					+ "FROM accounts "
+					+ "INNER JOIN customer_accounts USING(account_id) "
+					+ "INNER JOIN bank_customer USING (customer_id) "
+					+ "WHERE account_id = ?";
+			
+			PreparedStatement stmt = con.prepareStatement(sql);
+			
+			stmt.setInt(1, account.getAccountID());
+			
+			ResultSet rs = stmt.executeQuery();
+			
+			if(rs.next()) {
+				String firstName = rs.getString("first_name");
+				String lastName = rs.getString("last_name");
+				String phoneNumber = rs.getString("phone_number");
+				String username = rs.getString("username");
+				String password = rs.getString("password");
+				int customerID = rs.getInt("customer_id");
+				
+				Customer c = new Customer(firstName, lastName, phoneNumber, username, password, customerID);
+				c.addAccount(account);
+				cList.add(c);
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return cList;
+
 	}
 
 }
