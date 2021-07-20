@@ -2,7 +2,7 @@ package com.bank.models;
 
 
 
-public class Employee {
+public class Employee extends TranDisplay {
 	
 	private int tranId;
 	private int srcId;
@@ -20,14 +20,6 @@ public class Employee {
 		this.tranAmount = tranAmount;
 	}
 	
-	
-	
-	public Employee(int destId, int tranAmount) {
-		super();
-		this.destId = destId;
-		this.tranAmount = tranAmount;
-	}
-
 	public Employee(int srcId, int destId, int tranAmount) {
 		this.srcId = srcId;
 		this.destId = destId;

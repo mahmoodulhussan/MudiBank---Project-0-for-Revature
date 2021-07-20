@@ -14,6 +14,7 @@ public interface CustomerDao {
 	
 	Customer getCustomerByUsername(String username);
 	
+	
 	public ArrayList<Customer> getByAccount(Account account);
 	
 	void createCustomer(Customer c) throws SQLException;
@@ -22,5 +23,9 @@ public interface CustomerDao {
 	
 	void deleteCustomer(Customer c);
 	
+	void acceptTransfer();
+	
+	void rejectTransfer();
+
 
 }

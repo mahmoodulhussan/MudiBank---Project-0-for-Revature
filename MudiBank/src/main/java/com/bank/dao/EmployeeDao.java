@@ -13,10 +13,15 @@ public interface EmployeeDao {
 
 	public void initTransfer(Employee emp);
 	
-	public List<TranDisplay> getAllTransfers();
+	List<TranDisplay> getAllTransfers();
+	
+	
+//	public List<TranDisplay> getTransferLog();
 	
 	public Customer getCustomerTransfers(Customer c);
 	
 	public Employee checkBalance(int src_id);
+
+//	List<Employee> getAllTransfers(Employee emp);
 
 }

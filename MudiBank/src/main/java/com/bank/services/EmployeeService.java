@@ -25,13 +25,17 @@ private EmployeeDao eDao;
 		return emp;
 	}
 	
-	public Employee depositWithdraw(int destId, int tranAmount) {
-		Employee emp = new Employee(destId, tranAmount);
-		eDao.initTransfer(emp);
+	public Employee depositWithdraw(int srcId, int destId, int tranAmount) {
+		Employee emp = new Employee(srcId, destId, tranAmount);
+		eDao.depositWithdraw(emp);
 		return emp;
 	}
 	
-	public List<TranDisplay> getAllPosts(){
+//	public List<TranDisplay> getTransferLog(){
+//		return eDao.getTransferLog();
+//	}
+	
+	public List<TranDisplay> getAllTransfers(){
 		return eDao.getAllTransfers();
 	}
 	

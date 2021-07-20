@@ -175,5 +175,27 @@ public class CustomerDaoDB implements CustomerDao {
 		return cList;
 
 	}
+	@Override
+	public void acceptTransfer() {
+		Connection con = conUtil.getConnection();
+		
+		try {
+			con.commit();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+		@Override
+		public void rejectTransfer() {
+			Connection con = conUtil.getConnection();
+			
+			try {
+				con.rollback();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		
+				
+	}
 
 }

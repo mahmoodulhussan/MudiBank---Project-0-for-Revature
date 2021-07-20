@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import com.bank.models.Customer;
@@ -29,14 +30,12 @@ public class EmployeeDaoDB implements EmployeeDao{
 			Connection con = conUtil.getConnection();
 			//To use our functions/procedure we need to turn off autocommit
 			con.setAutoCommit(false);
-			String sql = "call deposit_withdrawl(?,?)";
+			String sql = "call init_transfer(?,?,?)";
 			CallableStatement cs = con.prepareCall(sql);
 			
-//			cs.setInt(1, emp.getSrcId());
-			cs.setInt(1, emp.getDestId());
-			cs.setInt(2, emp.getTranAmount());
-			
-			cs.execute();
+			cs.setInt(1, emp.getSrcId());
+			cs.setInt(2, emp.getDestId());
+			cs.setInt(3, emp.getTranAmount());
 			
 			con.setAutoCommit(true);
 			
@@ -62,45 +61,62 @@ public class EmployeeDaoDB implements EmployeeDao{
 			
 			cs.execute();
 			
-			con.setAutoCommit(true);
+//			con.setAutoCommit(true);
 			
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
-		
+	
 	}
+
+//	@Override
+//	public getTransferLog() {
+//				
+//		try {
+//			Connection con = conUtil.getConnection();
+//			//To create a simple statement we write our query as a string
+//
+//			String sql = "SELECT * FROM transfers";
+//			
+//			//We need to create a statement with this sql string
+//			Statement s = con.createStatement();
+//			ResultSet rs = s.executeQuery(sql);
+//			
+//			while(rs.next()) {
+//				TranDisplay tran = new TranDisplay(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4));
+//				transferLog.add(tran);
+//			}
+//			
+//			return transferLog;
+//			
+//		} catch(SQLException e) {
+//			e.printStackTrace();
+//		}		return null;
+//	}
+	
 	@Override
 	public List<TranDisplay> getAllTransfers() {
 		
-		List<TranDisplay> pList = new ArrayList<TranDisplay>();
+		List<TranDisplay> tranList = new ArrayList<TranDisplay>();
 		
 		try {
 			Connection con = conUtil.getConnection();
-			con.setAutoCommit(false);
-			//Use this syntax to call a stored function
-			String sql = "{?=call get_all_posts()}";
+			//To create a simple statement we write our query as a string
+			String sql = "SELECT * FROM transfers";
 			
-			CallableStatement cs = con.prepareCall(sql);
-			
-			cs.registerOutParameter(1, Types.OTHER);
-			
-			cs.execute();
-			
-			ResultSet rs = (ResultSet) cs.getObject(1);
+			//We need to create a statement with this sql string
+			Statement s = con.createStatement();
+			ResultSet rs = s.executeQuery(sql);
 			
 			while(rs.next()) {
-				TranDisplay post = new TranDisplay(rs.getString(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getString(5));
-				pList.add(post);
+				tranList.add(new Employee(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4)));
 			}
 			
-			con.setAutoCommit(true);
-			return pList;
+			return tranList;
 			
 		} catch(SQLException e) {
 			e.printStackTrace();
-		}
-		
-		return null;
+		}		return null;
 	}
 
 	@Override
@@ -109,7 +125,7 @@ public class EmployeeDaoDB implements EmployeeDao{
 		try {
 			Connection con = conUtil.getConnection();
 			con.setAutoCommit(false);
-			String sql = "{?=call get_customer_transfers(?)}";
+			String sql = "{?=call get_customer_transfers(?,?,?)}";
 			
 			CallableStatement cs = con.prepareCall(sql);
 			

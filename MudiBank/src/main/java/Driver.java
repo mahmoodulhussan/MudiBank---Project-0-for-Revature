@@ -29,6 +29,7 @@ public class Driver {
 		//This will be used to control our loop
 //		boolean done = false;
 //		
+		List<TranDisplay> tranD;
 		Customer c;
 		Employee emp;
 		String option = "";
@@ -38,8 +39,8 @@ public class Driver {
 			
 			switch(option) {
 			case "1":
-				boolean i = true;
-				if(i) {
+				boolean i = false;
+				while (i != true) {
 				System.out.println("Please enter your username: ");
 				String username = in.nextLine();
 				System.out.print("Please enter your password: ");
@@ -58,8 +59,8 @@ public class Driver {
 				while(!optio.equals("5")) {
 					switch(optio) {
 					case "1":
-						boolean b = true;
-						if(b) {
+						boolean b = false;
+						if(b != true) {
 							System.out.println("Please enter your Account ID: ");
 							int srcId = in.nextInt();
 							
@@ -68,11 +69,11 @@ public class Driver {
 								System.out.println("Acount " + srcId + " has $ " + emp.getTranAmount() + " present in account.");
 							} catch(Exception e) {
 								System.out.println("Account ID was invalid. Goodbye");
-							} b = false;
+							} b = true;
 						}	break;
 					case"2":
-						boolean d = true;
-						if (d) {
+						boolean d = false;
+						if (!d == true) {
 							System.out.println("Please enter your Account ID: ");
 							int srcId = in.nextInt();
 							System.out.println("Please enter your Account ID again: ");
@@ -80,16 +81,20 @@ public class Driver {
 							System.out.println("Please enter the $ you want to deposit/withdraw. Enter positive value for deposite and negative value for withdrawal. ");
 							int tranAmount = in.nextInt();
 							try {
-								emp = eServ.initTransfer(srcId, destId, tranAmount);
+								emp = eServ.depositWithdraw(srcId, destId, tranAmount);
 								System.out.println("Deposit/Withdrawl was successful");
+								d = true;
+							
 							} catch(Exception e) {
 								System.out.println("Account ID was invalid. Goodbye");
-								d = false;
-							} 
-						}	break;
+								
+							} return;
+						}
+						break;
+						
 					case"3":
 						boolean f = true;
-						if (f) {
+						if (!f == true) {
 							System.out.println("Please enter your Account ID: ");
 							int srcId = in.nextInt();
 							System.out.println("Please enter the recipient's Account ID: ");
@@ -98,19 +103,28 @@ public class Driver {
 							int tranAmount = in.nextInt();
 							try {
 								emp = eServ.initTransfer(srcId, destId, tranAmount);
-								System.out.println("Transfer for transfer has been submitted for approval");
+								System.out.println("Request for transfer has been submitted for approval");
 							} catch(Exception e) {
 								System.out.println("Request for transfer failed. Goodbye");
-								f = false;
+								f =  true;
 							} 
 						}	break;	
-					}
+					case "4":
+						System.out.println("Press 1 to accept the transfer. Press 2 to reject.");
+						int choi = Integer.parseInt(in.nextLine());
+						if(choi == 1) { 
+							cDao.acceptTransfer();
+							System.out.println("You have successfully accepted the transfer!");
+						}else {
+							cDao.rejectTransfer();
+							System.out.println("You have successfully rejected the transfer!");
+						}
+							}
+					break;
 						
 					} 
 				}
 				
-				
-//				break;
 			case "2":
 				boolean j = true;
 				if (j) {
@@ -148,12 +162,62 @@ public class Driver {
 					} catch(Exception e) {
 						System.out.println("Username or password was incorect. Goodbye");
 					} 
+				}
+					String opti = "";
+
+					opti = menu.empPortal();
 					
+					if(!opti.equals("4")) {
+						switch(opti) {
+						case "1":
+							System.out.println("Press 1 to approve a customer account creation. Press 2 to reject.");
+							int cho = Integer.parseInt(in.nextLine());
+							if(cho == 1) { 
+								cDao.acceptTransfer();
+								System.out.println("You have successfully approved the customer account creation!");
+								return;
+							}else {
+								cDao.rejectTransfer();
+								System.out.println("You have successfully rejected the customer account creation!");
+							}
+								
+							break;
+						
+						case "2":
+							boolean g = false;
+							if(g != true) {
+								System.out.println("Please enter the Customer Account ID: ");
+								int srcId = in.nextInt();
+								
+								try {
+									emp = eDao.checkBalance(srcId);
+									System.out.println("Acount " + srcId + " has $ " + emp.getTranAmount() + " present in account.");
+								} catch(Exception e) {
+									System.out.println("Account ID was invalid. Goodbye");
+								} g = true;
+								
+								return;
+							}	break;
+												
+						case "3" :
+								try {
+									tranD = eServ.getAllTransfers();
+									System.out.println("Here is the record of all the transactions: " + eDao.getAllTransfers());
+								} catch(Exception e) {
+									System.out.println("Sorry, you are not authorized to see the transaction records. Goodbye");
+								}
+							}	break;	
+							
+									
+
+							}
+							
+							
 					}
 			
 			}
 			
-			
+				
 //			if(c == null) {
 //				System.out.println("Press 1 for existing customer Login, Press 2 to Signup");
 //				int choice = Integer.parseInt(in.nextLine());
@@ -213,7 +277,7 @@ public class Driver {
 //					done = (choice == 1) ? true : false;
 //				}
 //			}
-		}
+		
 		
 		System.out.println("Goodbye :)");
 		in.close();
