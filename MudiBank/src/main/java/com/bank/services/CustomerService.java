@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Test;
+
 import com.bank.dao.CustomerDao;
 //import com.bank.dao.FileIO;
 //import com.bank.dao.UserDao;
@@ -24,6 +26,9 @@ public class CustomerService {
 		this.cDao = c;
 	}
 	
+	public CustomerService() {
+	}
+
 	public Customer signUp(String first, String last, String username, String email, String password, int startingBalance) throws UserNameAlreadyExistException{
 		Customer c = new Customer(first, last, username, email, password, startingBalance);
 		
@@ -40,7 +45,7 @@ public class CustomerService {
 	
 	
 	
-	
+	@Test
 	public Customer signIn(String username, String password) throws UserDoesNotExistException, InvalidCredentialsException{
 		Customer c = cDao.getCustomerByUsername(username);
 		
