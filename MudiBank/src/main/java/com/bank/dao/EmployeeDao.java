@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.bank.models.Customer;
 import com.bank.models.Employee;
-import com.bank.models.TranDisplay;
+import com.bank.models.TransferLog;
 
 public interface EmployeeDao {
 	
@@ -13,10 +13,12 @@ public interface EmployeeDao {
 
 	public void initTransfer(Employee emp);
 	
-	List<TranDisplay> getAllTransfers();
+	List<TransferLog> getAllTransfers();
 	
+	void acceptTransfer();
+
+	void rejectTransfer();
 	
-//	public List<TranDisplay> getTransferLog();
 	
 	public Customer getCustomerTransfers(Customer c);
 	

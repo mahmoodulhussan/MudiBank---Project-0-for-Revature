@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Savepoint;
 import java.sql.Statement;
 import java.sql.Types;
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ import java.util.List;
 
 import com.bank.models.Customer;
 import com.bank.models.Employee;
-import com.bank.models.TranDisplay;
+import com.bank.models.TransferLog;
 //import com.bank.models.User;
 import com.bank.utils.ConnectionUtil;
 
@@ -37,11 +38,16 @@ public class EmployeeDaoDB implements EmployeeDao{
 			cs.setInt(2, emp.getDestId());
 			cs.setInt(3, emp.getTranAmount());
 			
+			cs.execute();
+           
+//			Savepoint savepoint = con.setSavepoint("savepoint1");
 			con.setAutoCommit(true);
+
 			
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
+	
 		
 	}
 	//We use callable statements to call stored procedures and functions from java
@@ -60,44 +66,50 @@ public class EmployeeDaoDB implements EmployeeDao{
 			cs.setInt(3, emp.getTranAmount());
 			
 			cs.execute();
-			
+           
+			Savepoint savepoint = con.setSavepoint("savepoint1");
 //			con.setAutoCommit(true);
+
 			
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
 	
 	}
-
-//	@Override
-//	public getTransferLog() {
-//				
-//		try {
-//			Connection con = conUtil.getConnection();
-//			//To create a simple statement we write our query as a string
-//
-//			String sql = "SELECT * FROM transfers";
-//			
-//			//We need to create a statement with this sql string
-//			Statement s = con.createStatement();
-//			ResultSet rs = s.executeQuery(sql);
-//			
-//			while(rs.next()) {
-//				TranDisplay tran = new TranDisplay(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4));
-//				transferLog.add(tran);
-//			}
-//			
-//			return transferLog;
-//			
-//		} catch(SQLException e) {
-//			e.printStackTrace();
-//		}		return null;
-//	}
 	
 	@Override
-	public List<TranDisplay> getAllTransfers() {
+	public void acceptTransfer() {
+		Connection con = conUtil.getConnection();
 		
-		List<TranDisplay> tranList = new ArrayList<TranDisplay>();
+		try {
+			con.setAutoCommit(false);
+
+			con.commit(savepoint1);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+
+	@Override
+	public void rejectTransfer() {
+		Connection con = conUtil.getConnection();
+		
+		try {
+			con.setAutoCommit(false);
+
+			con.rollback(savepoint1);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}	
+}
+
+
+	
+	@Override
+	public List<TransferLog> getAllTransfers() {
+		
+		List<TransferLog> tranList = new ArrayList<TransferLog>();
 		
 		try {
 			Connection con = conUtil.getConnection();
@@ -109,7 +121,7 @@ public class EmployeeDaoDB implements EmployeeDao{
 			ResultSet rs = s.executeQuery(sql);
 			
 			while(rs.next()) {
-				tranList.add(new Employee(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4)));
+				tranList.add(new TransferLog(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4)));
 			}
 			
 			return tranList;
@@ -143,7 +155,7 @@ public class EmployeeDaoDB implements EmployeeDao{
 			
 			c.setPosts(transfers);
 			
-			con.setAutoCommit(true);
+//			con.setAutoCommit(true);
 			return c;
 			
 		} catch (SQLException e) {
@@ -179,5 +191,5 @@ public class EmployeeDaoDB implements EmployeeDao{
 		
 		return null;
 	}
-
+	
 }

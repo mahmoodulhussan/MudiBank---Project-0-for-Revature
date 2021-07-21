@@ -70,3 +70,78 @@
 2021-07-19 21:24:15 INFO  Logging:56 - User was logged in
 2021-07-19 21:41:23 INFO  Logging:56 - User was logged in
 2021-07-19 21:43:03 INFO  Logging:56 - User was logged in
+2021-07-20 10:29:51 INFO  Logging:61 - User was logged in
+2021-07-20 10:43:31 WARN  Logging:57 - User tried to login with invalid credentials
+2021-07-20 10:47:31 WARN  Logging:57 - User tried to login with invalid credentials
+2021-07-20 10:53:59 INFO  Logging:61 - User was logged in
+2021-07-20 10:54:48 INFO  Logging:61 - User was logged in
+2021-07-20 10:57:07 INFO  Logging:61 - User was logged in
+2021-07-20 11:00:12 INFO  Logging:61 - User was logged in
+2021-07-20 11:01:26 INFO  Logging:61 - User was logged in
+2021-07-20 11:02:43 INFO  Logging:61 - User was logged in
+2021-07-20 11:04:23 INFO  Logging:61 - User was logged in
+2021-07-20 11:24:42 INFO  Logging:61 - User was logged in
+2021-07-20 11:25:40 INFO  Logging:61 - User was logged in
+2021-07-20 11:31:40 INFO  Logging:61 - User was logged in
+2021-07-20 11:39:49 INFO  Logging:61 - User was logged in
+2021-07-20 11:43:23 INFO  Logging:61 - User was logged in
+2021-07-20 11:45:55 INFO  Logging:61 - User was logged in
+2021-07-20 11:48:09 INFO  Logging:61 - User was logged in
+2021-07-20 11:49:37 INFO  Logging:61 - User was logged in
+2021-07-20 11:50:46 INFO  Logging:61 - User was logged in
+2021-07-20 11:51:23 INFO  Logging:61 - User was logged in
+2021-07-20 11:52:04 INFO  Logging:61 - User was logged in
+2021-07-20 11:56:45 INFO  Logging:61 - User was logged in
+2021-07-20 11:58:13 INFO  Logging:61 - User was logged in
+2021-07-20 12:00:11 INFO  Logging:61 - User was logged in
+2021-07-20 12:01:41 INFO  Logging:61 - User was logged in
+2021-07-20 12:03:05 INFO  Logging:61 - User was logged in
+2021-07-20 12:03:19 INFO  Logging:61 - User was logged in
+2021-07-20 12:04:13 INFO  Logging:61 - User was logged in
+2021-07-20 12:04:42 INFO  Logging:61 - User was logged in
+2021-07-20 12:06:28 INFO  Logging:61 - User was logged in
+2021-07-20 13:53:58 INFO  Logging:61 - User was logged in
+2021-07-20 21:04:49 INFO  Logging:37 - New user has registered
+2021-07-20 21:27:08 INFO  Logging:61 - User was logged in
+2021-07-20 21:27:47 INFO  Logging:61 - User was logged in
+2021-07-20 21:28:23 INFO  Logging:61 - User was logged in
+2021-07-20 21:28:57 INFO  Logging:61 - User was logged in
+2021-07-20 21:29:29 INFO  Logging:61 - User was logged in
+2021-07-20 21:30:41 INFO  Logging:61 - User was logged in
+2021-07-20 21:32:18 INFO  Logging:61 - User was logged in
+2021-07-20 21:32:58 INFO  Logging:61 - User was logged in
+2021-07-20 21:33:35 INFO  Logging:61 - User was logged in
+2021-07-20 21:40:04 INFO  Logging:61 - User was logged in
+2021-07-20 21:40:47 INFO  Logging:61 - User was logged in
+2021-07-20 21:43:17 INFO  Logging:61 - User was logged in
+2021-07-20 21:44:10 INFO  Logging:61 - User was logged in
+2021-07-20 21:44:43 INFO  Logging:61 - User was logged in
+2021-07-20 21:51:27 INFO  Logging:61 - User was logged in
+2021-07-20 21:52:11 INFO  Logging:61 - User was logged in
+2021-07-20 21:55:34 INFO  Logging:61 - User was logged in
+2021-07-20 21:55:53 INFO  Logging:61 - User was logged in
+2021-07-20 21:56:18 INFO  Logging:61 - User was logged in
+2021-07-20 22:02:22 INFO  Logging:61 - User was logged in
+2021-07-20 22:03:16 INFO  Logging:61 - User was logged in
+2021-07-20 22:14:17 INFO  Logging:61 - User was logged in
+2021-07-20 22:15:09 INFO  Logging:61 - User was logged in
+2021-07-20 22:16:01 INFO  Logging:61 - User was logged in
+2021-07-20 22:33:40 INFO  Logging:61 - User was logged in
+2021-07-21 12:53:56 INFO  Logging:61 - User was logged in
+2021-07-21 12:53:56 INFO  Driver:51 - Login Successful
+2021-07-21 12:54:01 INFO  Driver:72 - Customer checked balance
+2021-07-21 12:54:22 INFO  Logging:61 - User was logged in
+2021-07-21 12:54:22 INFO  Driver:51 - Login Successful
+2021-07-21 12:54:34 INFO  Driver:91 - Customer deposited or withdrawn money
+2021-07-21 12:54:52 INFO  Logging:61 - User was logged in
+2021-07-21 12:54:52 INFO  Driver:51 - Login Successful
+2021-07-21 12:54:54 INFO  Driver:72 - Customer checked balance
+2021-07-21 12:55:09 INFO  Logging:61 - User was logged in
+2021-07-21 12:55:09 INFO  Driver:51 - Login Successful
+2021-07-21 12:55:27 INFO  Driver:116 - Customer transferred money
+2021-07-21 12:56:11 INFO  Logging:37 - New user has registered
+2021-07-21 12:56:11 INFO  Driver:162 - A new user signed up
+2021-07-21 12:56:27 INFO  Logging:61 - User was logged in
+2021-07-21 12:56:51 INFO  Logging:61 - User was logged in
+2021-07-21 12:56:51 INFO  Driver:51 - Login Successful
+2021-07-21 12:57:09 INFO  Logging:61 - User was logged in

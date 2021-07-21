@@ -45,7 +45,7 @@ public class CustomerService {
 	
 	
 	
-	@Test
+	
 	public Customer signIn(String username, String password) throws UserDoesNotExistException, InvalidCredentialsException{
 		Customer c = cDao.getCustomerByUsername(username);
 		

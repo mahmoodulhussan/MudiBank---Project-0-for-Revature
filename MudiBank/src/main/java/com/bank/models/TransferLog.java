@@ -1,26 +1,30 @@
 package com.bank.models;
 
+public class TransferLog {
 
-
-public class Employee {
-	
+	private String username;
 	private int tranId;
 	private int srcId;
 	private int destId;
 	private int tranAmount;
 	
-	public Employee() {
-		
+	public TransferLog() {
+		super();
 	}
-	
-	public Employee(int id, int srcId, int destId, int tranAmount) {
-		this.tranId = id;
+
+	public TransferLog(int tranId, int srcId, int destId, int tranAmount) {
+		super();
+		this.tranId = tranId;
 		this.srcId = srcId;
 		this.destId = destId;
 		this.tranAmount = tranAmount;
 	}
-	
-	public Employee(int srcId, int destId, int tranAmount) {
+
+
+	public TransferLog(String username, int tranId, int srcId, int destId, int tranAmount) {
+		super();
+		this.username = username;
+		this.tranId = tranId;
 		this.srcId = srcId;
 		this.destId = destId;
 		this.tranAmount = tranAmount;
@@ -60,11 +64,20 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return "Employee [tranId=" + tranId + ", srcId=" + srcId + ", destId=" + destId + ", tranAmount=" + tranAmount
-				+ "]";
+		return "TranDisplay [tranId=" + tranId + ", srcId=" + srcId + ", destId=" + destId + ", tranAmount="
+				+ tranAmount + "]";
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	
+	
 
-
+	
 }

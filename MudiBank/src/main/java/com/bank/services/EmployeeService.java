@@ -8,7 +8,7 @@ import com.bank.dao.EmployeeDao;
 import com.bank.logging.Logging;
 import com.bank.models.Customer;
 import com.bank.models.Employee;
-import com.bank.models.TranDisplay;
+import com.bank.models.TransferLog;
 //import com.bank.models.User;
 
 public class EmployeeService {
@@ -35,7 +35,7 @@ private EmployeeDao eDao;
 //		return eDao.getTransferLog();
 //	}
 	
-	public List<TranDisplay> getAllTransfers(){
+	public List<TransferLog> getAllTransfers(){
 		return eDao.getAllTransfers();
 	}
 	

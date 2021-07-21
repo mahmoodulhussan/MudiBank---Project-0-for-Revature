@@ -175,11 +175,16 @@ public class CustomerDaoDB implements CustomerDao {
 		return cList;
 
 	}
+	
+	
+	
 	@Override
 	public void acceptTransfer() {
 		Connection con = conUtil.getConnection();
 		
 		try {
+			con.setAutoCommit(false);
+
 			con.commit();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -190,6 +195,8 @@ public class CustomerDaoDB implements CustomerDao {
 			Connection con = conUtil.getConnection();
 			
 			try {
+				con.setAutoCommit(false);
+
 				con.rollback();
 			} catch (SQLException e) {
 				e.printStackTrace();
